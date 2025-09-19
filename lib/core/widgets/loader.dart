@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
 
-class Loader extends StatelessWidget { 
+class Loader extends StatelessWidget {
   const Loader({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(
-        color: Colors.blueAccent,
-      ),
+      child: CircularProgressIndicator(color: AppColors.accentBlue),
     );
   }
 }
