@@ -2,6 +2,7 @@ import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../routes/app_routes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +12,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  final String _socialMediaUrl = 'https://www.linkedin.com/in/priyanshu7/'; // Replace with your actual link!
+
+  // Async function to launch the URL
+  Future<void> _launchUrl() async {
+    final Uri url = Uri.parse(_socialMediaUrl);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $_socialMediaUrl');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -49,14 +59,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     const Spacer(),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.login,
-                          arguments: {'role': 'jobseeker'},
-                        );
+                        _launchUrl();
                       },
                       child: const Text(
-                        'Sign In',
+                        'Social Media',
                         style: TextStyle(color: AppColors.accentBlue),
                       ),
                     ),
@@ -125,7 +131,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
         /// Job Seeker Card
         Card(
-          color: AppColors.card,
+          color: Colors.transparent,
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -184,7 +190,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
         /// Employee Card
         Card(
-          color: AppColors.card,
+          color: Colors.transparent,
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -248,7 +254,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.card,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.white.withOpacity(0.03)),
       ),

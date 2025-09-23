@@ -16,6 +16,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  final TextEditingController _name = TextEditingController();
   String _role = 'jobseeker';
 
   @override
@@ -50,6 +51,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                CustomInput(hint: 'Name', controller: _name),
+                const SizedBox(height: 12),
                 CustomInput(hint: 'Email', controller: _email),
                 const SizedBox(height: 12),
                 CustomInput(
